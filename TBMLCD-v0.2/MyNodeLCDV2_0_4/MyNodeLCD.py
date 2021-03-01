@@ -190,7 +190,7 @@ def place_value(number):
 # Define a function to get current block height in the longest chain
 def get_block_count():
     try:
-        url = "https://blockchain.info/q/getblockcount"
+        url = "https://blockstream.info/api/blocks/tip/height"
         currentBlock = urlreq.urlopen(url, context=ssl.create_default_context(cafile=certifi.where())).read()
         currentBlockString = currentBlock.decode('utf-8')
         #print("Current block: " + currentBlockString)
@@ -202,7 +202,7 @@ def get_block_count():
 # Define a function get bitcoin price
 def get_btc_price():
     try:
-        url = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=INR,USD"
+        url = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=BRL,USD"
         currentPrice = urlreq.urlopen(url, context=ssl.create_default_context(cafile=certifi.where())).read()
         price_dict = json.loads(currentPrice)
         price = int(price_dict['USD'])
